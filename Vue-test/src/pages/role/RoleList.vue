@@ -1,12 +1,10 @@
 <template>
-   <div>
-    <Main/>
-   </div>
+    <div>
+        <h1>Role List Page</h1>
+    </div>
 </template>
 
 <script setup>
-import Main from './layouts/Main.vue';
-
     
 </script>
 

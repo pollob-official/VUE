@@ -1,14 +1,13 @@
 <template>
-   <div>
-    <Main/>
-   </div>
+    <div>
+        <h1>Create Role Page</h1>
+    </div>
 </template>
 
 <script setup>
-import Main from './layouts/Main.vue';
-
     
 </script>
+
 
 <style>
 
