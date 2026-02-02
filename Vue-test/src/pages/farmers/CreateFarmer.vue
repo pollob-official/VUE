@@ -2,23 +2,37 @@
     <div>
         <h1>Create Farmer</h1>
         <form action="">
+
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" v-model="farmer.stakeholder.name">
+          </div>
+          <div>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" v-model="farmer.stakeholder.phone">
+          </div>
+          <div>
+            <label for="land_area">Land Area:</label>
+            <input type="text" id="land_area" name="land_area" v-model="farmer.land_area">
+          </div>
+
             <div>
                 <label for="crop_history">Crop History:</label>
-                <input type="text" id="crop_history" name="crop_history">
+                <input type="text" id="crop_history" name="crop_history" v-model="farmer.crop_history">
             </div>
             <br>
             <div>
                 <label for="farmer_card_no">Farmer Card No:</label>
-                <input type="text" id="farmer_card_no" name="farmer_card_no">
+                <input type="text" id="farmer_card_no" name="farmer_card_no" v-model="farmer.farmer_card_no">
             </div>
-             <div> <button type="submit">Submit</button></div>
+             <div> <button type="submit" @click.prevent="handleCreate">Submit</button></div>
 
         </form>
     </div>
 </template>
 
-<script lang="ts" setup>
-    import axios from 'axios';
+<script setup>
+import axios from 'axios';
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 
