@@ -68,7 +68,7 @@ onMounted(() => {
     fetchFarmers();
 })
 
-function farmerDelete(id){
+function deleteFarmer(id){
     axios.delete(`${baseUrl}/farmers/${id}`)
     .then(response=>{
         console.log(response);

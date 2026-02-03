@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\DistrictController;
+use App\Http\Controllers\Api\DivisionController;
 use App\Http\Controllers\Api\FarmersController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -33,5 +35,7 @@ Route::middleware('auth:sanctum')->group( function () {
  Route::apiResource("customer", CustomerController::class);
 
  Route::apiResource('farmers', FarmersController::class);
+ Route::apiResource('districts', DistrictController::class);
+ Route::apiResource('divisions', DivisionController::class);
 
 

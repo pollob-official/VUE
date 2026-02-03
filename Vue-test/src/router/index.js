@@ -5,6 +5,8 @@ import RoleList from "../pages/role/RoleList.vue";
 import CreateRole from "../pages/role/CreateRole.vue";
 import CreateFarmer from "../pages/farmers/CreateFarmer.vue";
 import EditFarmer from "../pages/farmers/EditFarmer.vue";
+import Products from "../pages/product/Products.vue";
+import City from "../pages/city/City.vue";
 
 const routes=[
     {path: '/farmers', name: 'FarmerList', component: FarmerList},
@@ -14,6 +16,9 @@ const routes=[
     {path: '/', name: 'dashboard', component: Dashboard},
     { path: '/role', name: 'RoleList', component: RoleList},
     {path: '/role/create', name: 'CreateRole', component: CreateRole},
+
+    {path:"/products", component:Products},
+    {path:"/city", component: City},
 
 ]
 

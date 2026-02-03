@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class District extends Model
+{
+    // protected $table = 'district';
+    public $timestamps = false;
+
+    protected $fillable = ['name', 'division_id'];
+
+    // Relationship to Division
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_id');
+    }
+}

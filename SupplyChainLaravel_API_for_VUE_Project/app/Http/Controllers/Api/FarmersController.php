@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Farmer;
+use App\Models\Stakeholder;
 use Illuminate\Http\Request;
 
 class FarmersController extends Controller
@@ -22,15 +23,20 @@ class FarmersController extends Controller
      */
     public function store(Request $request)
     {
+        // return response()->json(['success' => $request->all()], 200);
         try {
+            $stackH = new Stakeholder();
+
+            $stackH->name = $request->farmer['name'];
+            $stackH->phone = $request->farmer['phone'];
+            $stackH->save();
             $farmer = new Farmer();
-            $farmer->stakeholder->name = $request->stakeholder['name'];
-            $farmer->stakeholder->phone = $request->stakeholder['phone'];
+            $farmer->stakeholder_id = $stackH->id;
             $farmer->crop_history = $request->farmer['crop_history'];
             $farmer->land_area = $request->farmer['land_area'];
             $farmer->farmer_card_no = $request->farmer['farmer_card_no'];
             $farmer->save();
-            return response()->json(['success' => 'Farmer saved successfully'], 200);
+            return response()->json(['success' => $stackH], 200);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), 200);
         }
@@ -59,9 +65,10 @@ class FarmersController extends Controller
                 return response()->json(["error" => "Farmer not found"], 200);
             }
 
-            
+
             $farmer->stakeholder->name = $request->farmer['name'];
             $farmer->stakeholder->phone = $request->farmer['phone'];
+            $farmer->stakeholder->save();
             $farmer->crop_history = $request->farmer['crop_history'];
             $farmer->land_area = $request->farmer['land_area'];
             $farmer->farmer_card_no = $request->farmer['farmer_card_no'];
@@ -80,6 +87,11 @@ class FarmersController extends Controller
     {
         $farmer = Farmer::find($id);
         $farmer->delete();
+
+        $stackH = Stakeholder::find($farmer->stakeholder_id);
+        if ($stackH) {
+            $stackH->delete();
+        }   
         return response()->json(["success" => "Farmer deleted successfully"], 200);
     }
 }
